@@ -1,140 +1,74 @@
 //portfolio projects
-let websites = [
+let allProjects = [
     {
-        title: "Mobile Phone Online Store",
-        image: "./images/portfolio/elkory.png",
-        github: "",
-        live: "https://elkoryphone.web.app/"
+        title: "Price Comparison Website",
+        image: "./images/portfolio/portfolio-1.jpg",
+        github: "https://github.com/AhmedL3swy",
+        live: ""
     },
     {
-        title: "Eccomerce Angular",
-        image: "./images/portfolio/ecommerce-angular.jpg",
-        github: "https://github.com/omarelemam49141/Market-Store-Website",
-        live: "https://eccomerce-971b5.web.app/"
+        title: "Dehazing API for Self-Driving Cars",
+        image: "./images/portfolio/portfolio-2.jpg",
+        github: "https://github.com/AhmedL3swy",
+        live: ""
     },
     {
-        title: "Eccomerce JavaScript",
-        image: "./images/portfolio/mnohm.png",
-        github: "https://github.com/omarelemam49141/JS-Modified-Version",
-        live: "https://omarelemam49141.github.io/JS-Modified-Version/"
+        title: "Examination System",
+        image: "./images/portfolio/portfolio-3.jpg",
+        github: "https://github.com/AhmedL3swy",
+        live: ""
+    },
+    {
+        title: "E-Commerce Application",
+        image: "./images/portfolio/portfolio-4.jpg",
+        github: "https://github.com/AhmedL3swy",
+        live: ""
+    },
+    {
+        title: "Attendance System",
+        image: "./images/portfolio/portfolio-5.jpg",
+        github: "https://github.com/AhmedL3swy",
+        live: ""
     }
 ]
 
-let templates = [
+let webApps = [
     {
-        title: "Template 1 Css & HTML",
-        image: "./images/portfolio/template1.png",
-        github: "https://github.com/omarelemam49141/HTML_CSS_TEMPLATE_ONE",
-        live: "https://omarelemam49141.github.io/HTML_CSS_TEMPLATE_ONE/"
+        title: "Price Comparison Website",
+        image: "./images/portfolio/portfolio-1.jpg",
+        github: "https://github.com/AhmedL3swy",
+        live: ""
     },
     {
-        title: "Template 2 Css & HTML",
-        image: "./images/portfolio/template2.png",
-        github: "https://github.com/omarelemam49141/HTML-CSS-TEMPLATE-TWO",
-        live: "https://omarelemam49141.github.io/HTML-CSS-TEMPLATE-TWO/"
+        title: "E-Commerce Application",
+        image: "./images/portfolio/portfolio-4.jpg",
+        github: "https://github.com/AhmedL3swy",
+        live: ""
     },
     {
-        title: "Template 3 Css & HTML & javascript",
-        image: "./images/portfolio/template3.png",
-        github: "https://github.com/omarelemam49141/HTML_CSS_TEMPLATE_THREE",
-        live: "https://omarelemam49141.github.io/HTML_CSS_TEMPLATE_THREE/"
-    },
-    {
-        title: "Template 4 Bootstrap & Javascript",
-        image: "./images/portfolio/bootstrap-1.png",
-        github: "https://github.com/omarelemam49141/Template-Bootstrap-1",
-        live: "https://omarelemam49141.github.io/Template-Bootstrap-1/"
+        title: "Attendance System",
+        image: "./images/portfolio/portfolio-5.jpg",
+        github: "https://github.com/AhmedL3swy",
+        live: ""
     }
 ]
 
-let javaScriptApps = [
+let aiProjects = [
     {
-        title: "The hangman game",
-        image: "./images/portfolio/hangman.png",
-        github: "https://github.com/omarelemam49141/HTML_CSS_TEMPLATE_THREE",
-        live: "https://omarelemam49141.github.io/HTML_CSS_TEMPLATE_THREE/"
-    },
-    {
-        title: "Typing speed game",
-        image: "./images/portfolio/wordsGame.png",
-        github: "https://github.com/omarelemam49141/HTML_CSS_TEMPLATE_THREE",
-        live: "https://omarelemam49141.github.io/HTML_CSS_TEMPLATE_THREE/"
-    },
-    {
-        title: "Memory cards game",
-        image: "./images/portfolio/memoryGame.png",
-        github: "https://github.com/omarelemam49141/memory-game",
-        live: "https://omarelemam49141.github.io/memory-game/"
-    },
-    {
-        title: "Exam 1",
-        image: "./images/portfolio/exam1.png",
-        github: "https://github.com/omarelemam49141/Quiz",
-        live: "https://omarelemam49141.github.io/Quiz/"
-    },
-    {
-        title: "Exam 2",
-        image: "./images/portfolio/exam2.png",
-        github: "https://github.com/omarelemam49141/Exam",
-        live: "https://omarelemam49141.github.io/Exam/"
-    },
-    {
-        title: "To Do List 1",
-        image: "./images/portfolio/todolist.png",
-        github: "https://github.com/omarelemam49141/To-Do-List2",
-        live: "https://omarelemam49141.github.io/To-Do-List2/"
-    },
-    {
-        title: "To Do List 2",
-        image: "./images/portfolio/todolist2.png",
-        github: "https://github.com/omarelemam49141/To-Do-List",
-        live: "https://omarelemam49141.github.io/To-Do-List/"
-    },
-    {
-        title: "Currency convertor",
-        image: "./images/portfolio/currency.png",
-        github: "https://github.com/omarelemam49141/Currency-Converting-Serial-Number-Generator",
-        live: "https://omarelemam49141.github.io/Currency-Converting-Serial-Number-Generator/"
-    },
-    {
-        title: "Data table",
-        image: "./images/portfolio/datatable-1.png",
-        github: "https://github.com/omarelemam49141/Data-Table-1",
-        live: "https://omarelemam49141.github.io/Data-Table-1/"
-    },
-    {
-        title: "Video html5",
-        image: "./images/portfolio/video.png",
-        github: "https://github.com/omarelemam49141/video-html5",
-        live: "https://omarelemam49141.github.io/video-html5/"
-    },
-    {
-        title: "Detect your location",
-        image: "./images/portfolio/your location.png",
-        github: "https://github.com/omarelemam49141/Detect-Location",
-        live: "https://omarelemam49141.github.io/Detect-Location/"
-    },
+        title: "Dehazing API for Self-Driving Cars",
+        image: "./images/portfolio/portfolio-2.jpg",
+        github: "https://github.com/AhmedL3swy",
+        live: ""
+    }
 ]
 
-let designs = [
+let desktopApps = [
     {
-        title: "Presentation 1 using canva",
-        image: "./images/portfolio/presentation1.png",
-        github: "",
-        live: "https://www.canva.com/design/DAF8mkyiENY/St0Dj664uSqmWCRagWag7Q/view?utm_content=DAF8mkyiENY&utm_campaign=designshare&utm_medium=link&utm_source=editor"
-    },
-    {
-        title: "Presentation 2 using canva",
-        image: "./images/portfolio/presentation2.png",
-        github: "",
-        live: "https://www.canva.com/design/DAF5gzD7iPs/3jLKsFngdzzVIHUoZNsVdQ/view?utm_content=DAF5gzD7iPs&utm_campaign=designshare&utm_medium=link&utm_source=editor"
-    },
-    {
-        title: "Presentation 3 using canva",
-        image: "./images/portfolio/presentation3.png",
-        github: "",
-        live: "https://www.canva.com/design/DAF17zf3SU8/nydxaa2lYz-zFFiMFxG9Ig/view?utm_content=DAF17zf3SU8&utm_campaign=designshare&utm_medium=link&utm_source=editor"
-    },
+        title: "Examination System",
+        image: "./images/portfolio/portfolio-3.jpg",
+        github: "https://github.com/AhmedL3swy",
+        live: ""
+    }
 ]
 
 function DisplayPortfolioItems(elem, arrayOfWorks) {
@@ -206,13 +140,13 @@ function DisplayPortfolioItems(elem, arrayOfWorks) {
 }
 
 window.addEventListener("load", function() {
-    //click the website button to display the website projects
-    let websiteButton = document.querySelector(".portfolio-heading button");
-    DisplayPortfolioItems(websiteButton, websites);
+    //click the all projects button to display all projects
+    let allProjectsButton = document.querySelector(".portfolio-heading button");
+    DisplayPortfolioItems(allProjectsButton, allProjects);
 
     /* typed animation */
     let typed = new Typed(".typing", {
-        strings: ["", "Web Designer", "web Developer", "Graphic Designer"],
+        strings: ["", "Full-Stack .NET Developer", "Angular Developer", "DevOps Engineer", "Software Engineer"],
         typeSpeed:100,
         BackSpeed: 60,
         loop: true
