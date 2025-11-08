@@ -47,6 +47,22 @@ let webApps = allProjects.filter(project => project.category == "Web Apps");
 let aiProjects = allProjects.filter(project => project.category == "AI Projects");
 let desktopApps = allProjects.filter(project => project.category == "Desktop Apps");
 
+/* Certifications data */
+let allCertifications = [
+    {
+        title: "AWS Certified Cloud Practitioner",
+        image: "./images/portfolio/cert/aws-cp.png",
+        issuer: "Amazon",
+        verify: "https://www.credly.com/badges/d388ac23-1895-486e-8aac-eda267495ceb"
+    },
+    {
+        title: "GitHub Foundations",
+        image: "./images/portfolio/cert/github-foundations.svg",
+        issuer: "GitHub",
+        verify: "https://learn.microsoft.com/en-us/users/ahmedl3swy/credentials/ca5aeee721d4609c?ref=https%3A%2F%2Fwww.credly.com%2F"
+    }
+];
+
 
 
 function DisplayPortfolioItems(elem, arrayOfWorks) {
@@ -79,6 +95,14 @@ function DisplayPortfolioItems(elem, arrayOfWorks) {
         portfolioImgDiv.appendChild(img);
 
         portfolioItemInnerDiv.appendChild(portfolioImgDiv);
+
+    // add a visible caption below the image so project name shows before hover
+    let captionDiv = document.createElement('div');
+    captionDiv.classList = 'portfolio-caption';
+    let captionTitle = document.createElement('h4');
+    captionTitle.innerText = element.title;
+    captionDiv.appendChild(captionTitle);
+    portfolioItemInnerDiv.appendChild(captionDiv);
 
 
         let liveDiv = document.createElement("div");
@@ -132,10 +156,56 @@ function DisplayPortfolioItems(elem, arrayOfWorks) {
     });
 }
 
+function DisplayCertifications() {
+    const container = document.getElementById('cert-items');
+    if (!container) return;
+    container.innerHTML = '';
+
+    allCertifications.forEach(cert => {
+        const item = document.createElement('div');
+        item.className = 'cert-item padd-15';
+
+        const inner = document.createElement('div');
+        inner.className = 'cert-inner shadow-dark';
+
+        const img = document.createElement('img');
+        img.setAttribute('src', cert.image);
+        img.setAttribute('alt', cert.title);
+    // Do not set width/height attributes here — let CSS control responsive sizing
+        inner.appendChild(img);
+
+        const verify = document.createElement('div');
+        verify.className = 'cert-verify';
+        const vlink = document.createElement('a');
+        vlink.setAttribute('href', cert.verify);
+        vlink.setAttribute('target', '_blank');
+        vlink.innerText = 'Verify';
+        verify.appendChild(vlink);
+        inner.appendChild(verify);
+
+        const body = document.createElement('div');
+        body.className = 'cert-body';
+        const h4 = document.createElement('h4');
+        h4.innerText = cert.title;
+        const p = document.createElement('p');
+        p.className = 'issuer';
+        p.innerText = cert.issuer;
+        body.appendChild(h4);
+        body.appendChild(p);
+
+        inner.appendChild(body);
+        item.appendChild(inner);
+        container.appendChild(item);
+    });
+}
+
 window.addEventListener("load", function() {
     //click the all projects button to display all projects
     let allProjectsButton = document.querySelector(".portfolio-heading button");
     DisplayPortfolioItems(allProjectsButton, allProjects);
+
+    // render certifications
+    DisplayCertifications();
 
     /* typed animation with automatic 'a' / 'an' article detection */
     const typingStrings = [ "Software Engineer","Full-Stack .NET Developer",".NET Developer", "Angular Developer", "DevOps Engineer"];
