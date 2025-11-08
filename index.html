@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Elesawy - Full-Stack .NET Developer</title>
+    <title>Ahmed Elesawy - Portfolio</title>
     <!-- CSS Files -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,6 +36,7 @@
                 <li><a href="#services"><i class="fa fa-list"></i>Services</a></li>
                 <li><a href="#portfolio"><i class="fa fa-briefcase"></i>Portfolio</a></li>
                 <li><a href="#contact" id="contactBtn"><i class="fa fa-comments"></i>Contact</a></li>
+                <li><a href="#" id="openCvAside"><i class="fa fa-file-pdf"></i>CV</a></li>
             </ul>
         </div>
         <!-- end aside  -->
@@ -107,8 +108,9 @@
                                     </div>
                                     <div class="row">
                                         <div class="buttons padd-15">
-                                            <!-- <a href="#" class="btn">Download CV</a> -->
-                                            <a href="#contact" class="btn hire-me" onclick="openContactSection()">Hire me</a>
+                            <!-- Download CV: update the href to match your CV filename inside the CV/ folder -->
+                            <a id="downloadCv" href="CV/CV.pdf" class="btn" download>Download CV</a>
+                            <a href="#contact" class="btn hire-me" onclick="openContactSection()">Hire me</a>
                                         </div>
                                     </div>
                                 </div>
@@ -319,93 +321,7 @@
                         </div>
                     </div>
                     <div class="row" id="portfolio-items">
-                        <!-- start portfolio item -->
-                        <div class="portfolio-item padd-15">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img">
-                                    <img src="images/portfolio/portfolio-1.jpg" alt="Price Comparison Website">
-                                </div>
-                            </div>
-                            <div class="live">
-                                <h3>Price Comparison Website</h3>
-                                <p style="font-size: 14px; margin: 10px 0;">ASP.NET Core • Angular • SQL Server • FastAPI (Python) • 2nd place in qTech Hackathon</p>
-                                <button class="git-btn btn"><a href="https://github.com/AhmedL3swy" target="_blank">FrontEnd</a></button>
-                                <button class="git-btn btn"><a href="https://github.com/AhmedL3swy" target="_blank">BackEnd</a></button>
-                                <button class="git-btn btn"><a href="https://github.com/AhmedL3swy" target="_blank">Scraping</a></button>
-                            </div>
-                        </div>
-                        <!-- end portfolio item -->
-                        <!-- start portfolio item -->
-                        <div class="portfolio-item padd-15">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img">
-                                    <img src="images/portfolio/portfolio-2.jpg" alt="Dehazing API">
-                                </div>
-                            </div>
-                            <div class="live">
-                                <h3>Dehazing API for Self-Driving Cars</h3>
-                                <p style="font-size: 14px; margin: 10px 0;">FastAPI • PyTorch • ONNX • OpenCV • 12th in Global NTIRE 2023 Challenge</p>
-                                <button class="git-btn btn"><a href="https://github.com/AhmedL3swy" target="_blank">AI Model</a></button>
-                                <button class="git-btn btn"><a href="https://github.com/AhmedL3swy" target="_blank">Deployment</a></button>
-                            </div>
-                        </div>
-                        <!-- end portfolio item -->
-                        <!-- start portfolio item -->
-                        <div class="portfolio-item padd-15">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img">
-                                    <img src="images/portfolio/portfolio-3.jpg" alt="Examination System">
-                                </div>
-                            </div>
-                            <div class="live">
-                                <h3>Examination System</h3>
-                                <p style="font-size: 14px; margin: 10px 0;">.NET Framework • WinForms • SQL Server • Crystal Reports • SSRS</p>
-                                <button class="git-btn btn"><a href="https://github.com/AhmedL3swy" target="_blank">GitHub</a></button>
-                            </div>
-                        </div>
-                        <!-- end portfolio item -->
-                        <!-- start portfolio item -->
-                        <div class="portfolio-item padd-15">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img">
-                                    <img src="images/portfolio/portfolio-4.jpg" alt="E-Commerce Application">
-                                </div>
-                            </div>
-                            <div class="live">
-                                <h3>E-Commerce Application</h3>
-                                <p style="font-size: 14px; margin: 10px 0;">HTML5 • CSS3 • Bootstrap • JavaScript • jQuery</p>
-                                <button class="git-btn btn"><a href="https://github.com/AhmedL3swy" target="_blank">GitHub</a></button>
-                            </div>
-                        </div>
-                        <!-- end portfolio item -->
-                        <!-- start portfolio item -->
-                        <div class="portfolio-item padd-15">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img">
-                                    <img src="images/portfolio/portfolio-5.jpg" alt="Attendance System">
-                                </div>
-                            </div>
-                            <div class="live">
-                                <h3>Attendance System</h3>
-                                <p style="font-size: 14px; margin: 10px 0;">ASP.NET Core • SQL Server • JavaScript • jQuery • Bootstrap</p>
-                                <button class="git-btn btn"><a href="https://github.com/AhmedL3swy" target="_blank">GitHub</a></button>
-                            </div>
-                        </div>
-                        <!-- end portfolio item -->
-                        <!-- start portfolio item -->
-                        <div class="portfolio-item padd-15">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img">
-                                    <img src="images/portfolio/portfolio-6.jpg" alt="More Projects">
-                                </div>
-                            </div>
-                            <div class="live">
-                                <h3>More Projects on GitHub</h3>
-                                <p style="font-size: 14px; margin: 10px 0;">Explore more projects and contributions</p>
-                                <button class="git-btn btn"><a href="https://github.com/AhmedL3swy" target="_blank">View GitHub</a></button>
-                            </div>
-                        </div>
-                        <!-- end portfolio item -->
+                        
                     </div>
                 </div>
             </section>
@@ -457,40 +373,7 @@
                         </div>
                         <!-- end contact info item -->
                     </div>
-                    <!-- <h3 class="contact-title padd-15">SEND ME AN EMAIL</h3>
-                    <h3 class="contact-sub-title padd-15">I WILL RESPOND AS SOON AS POSSIBLE</h3> -->
-                    <!-- start contact-form -->
-                    <!-- <div class="row">
-                        <div class="contact-form padd-15">
-                            <div class="row">
-                                <div class="form-item col-6 padd-15">
-                                    <div class="form-group">
-                                        <input type="text" placeholder="Name" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-item col-6 padd-15">
-                                    <div class="form-group">
-                                        <input type="text" placeholder="Email" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-item col-12 padd-15">
-                                    <div class="form-group">
-                                        <input type="text" placeholder="Subject" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-item col-12 padd-15">
-                                    <div class="form-group">
-                                        <textarea name="" id="" class="form-control" placeholder="Message" cols="30" rows="10"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-item col-12 padd-15">
-                                    <button class="btn" type="submit">Send Message</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
+                
                     <!-- end contact-form -->
                 </div>
             </section>
@@ -518,6 +401,27 @@
         </div>
     </div>
     <!-- end style switcher -->
+
+    <!-- Floating CV button (site-wide) -->
+    <button id="openCvFloating" class="cv-floating-btn btn" aria-label="Open CV"><i class="fa fa-file-pdf"></i>&nbsp;CV</button>
+
+    <!-- CV Modal -->
+    <div id="cvModal" class="cv-modal hidden" aria-hidden="true">
+        <div class="cv-modal-overlay" data-close></div>
+        <div class="cv-modal-content shadow-dark" role="dialog" aria-modal="true" aria-label="Curriculum Vitae">
+            <div class="cv-modal-header">
+                <h3>Curriculum Vitae</h3>
+                <div class="cv-modal-controls">
+                    <a id="cvDownload" class="btn" href="CV/CV.pdf" download>Download</a>
+                    <button id="cvClose" class="btn" aria-label="Close CV">Close</button>
+                </div>
+            </div>
+            <div class="cv-modal-body">
+                <!-- don't set src on load to avoid downloading the PDF automatically; use data-src and populate when opening -->
+                <iframe id="cvPreview" data-src="CV/CV.pdf" src="" frameborder="0" aria-label="CV preview"></iframe>
+            </div>
+        </div>
+    </div>
 
     <!-- JS Files -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js" integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

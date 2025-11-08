@@ -177,6 +177,103 @@ window.addEventListener("load", function() {
     document.querySelector(".hire-me").addEventListener("click", openContactSection);
 
     document.querySelector(".nav-toggler").addEventListener("click", slideAside);
+
+    // Download CV button: verify existence and gracefully notify if missing
+    const downloadBtn = document.getElementById('downloadCv');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', function (e) {
+            const href = downloadBtn.getAttribute('href');
+            // Try to check file existence via HEAD request when running from an http(s) server
+            try {
+                fetch(href, { method: 'HEAD' }).then(resp => {
+                    if (!resp.ok) {
+                        e.preventDefault();
+                        alert('CV file not found at ' + href + '. Please make sure your CV file exists in the CV/ folder and update the link.');
+                    }
+                    // if ok, allow default download behavior
+                }).catch(() => {
+                    // network error or cross-origin; allow default behavior but warn user in console
+                    console.warn('Could not verify CV file with HEAD request. If download fails, check CV/ folder and file name.');
+                });
+            } catch (err) {
+                console.warn('CV check skipped', err);
+            }
+        });
+    }
+
+    // CV modal logic
+    const cvModal = document.getElementById('cvModal');
+    const openCvFloating = document.getElementById('openCvFloating');
+    const openCvAside = document.getElementById('openCvAside');
+    const cvClose = document.getElementById('cvClose');
+    const cvOverlay = cvModal ? cvModal.querySelector('.cv-modal-overlay') : null;
+    const cvPreview = document.getElementById('cvPreview');
+    const cvDownloadModal = document.getElementById('cvDownload');
+
+    function openCvModal() {
+        if (!cvModal) return;
+        // set iframe src from data-src to avoid loading PDF until user requests it
+        if (cvPreview && cvPreview.dataset && cvPreview.dataset.src) {
+            cvPreview.setAttribute('src', cvPreview.dataset.src);
+        }
+        // ensure the modal download link matches the preview src
+        if (cvDownloadModal && cvPreview) {
+            cvDownloadModal.setAttribute('href', cvPreview.getAttribute('src') || cvPreview.dataset.src || 'CV/CV.pdf');
+        }
+
+        cvModal.classList.remove('hidden');
+        cvModal.setAttribute('aria-hidden', 'false');
+        // focus the close button for accessibility
+        setTimeout(() => {
+            if (cvClose) cvClose.focus();
+        }, 60);
+    }
+
+    function closeCvModal() {
+        if (!cvModal) return;
+        cvModal.classList.add('hidden');
+        cvModal.setAttribute('aria-hidden', 'true');
+        // clear iframe src to stop the browser PDF viewer and avoid keeping the file loaded
+        if (cvPreview) {
+            cvPreview.setAttribute('src', '');
+        }
+    }
+
+    if (openCvFloating) {
+        openCvFloating.addEventListener('click', function (e) {
+            e.preventDefault();
+            openCvModal();
+        });
+    }
+
+    if (openCvAside) {
+        openCvAside.addEventListener('click', function (e) {
+            e.preventDefault();
+            openCvModal();
+        });
+    }
+
+    if (cvClose) {
+        cvClose.addEventListener('click', function (e) {
+            e.preventDefault();
+            closeCvModal();
+        });
+    }
+
+    if (cvOverlay) {
+        cvOverlay.addEventListener('click', function () {
+            closeCvModal();
+        });
+    }
+
+    // close on Esc
+    document.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Escape') {
+            if (cvModal && !cvModal.classList.contains('hidden')) closeCvModal();
+        }
+    });
+
+    // (download link is synced when opening the modal)
 })
 
 /* slide the aside when clicking the aside toggler */
