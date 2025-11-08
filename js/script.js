@@ -1,75 +1,53 @@
-//portfolio projects
 let allProjects = [
     {
         title: "Price Comparison Website",
-        image: "./images/portfolio/portfolio-1.jpg",
-        github: "https://github.com/AhmedL3swy",
-        live: ""
+        image: "./images/portfolio/price-compare.png",
+        github: "https://github.com/orgs/Price-Pee/repositories",
+        live: "",
+        category: "Web Apps"
     },
     {
         title: "Dehazing API for Self-Driving Cars",
-        image: "./images/portfolio/portfolio-2.jpg",
-        github: "https://github.com/AhmedL3swy",
-        live: ""
+        image: "./images/portfolio/dehaze.png",
+        github: {
+            AI_MODEL: "https://github.com/AhmedL3swy/ResWB-Dehaze",
+            website: "https://github.com/AhmedL3swy/dehaze"
+        },
+        live: "",
+        category: "AI Projects"
     },
     {
         title: "Examination System",
-        image: "./images/portfolio/portfolio-3.jpg",
-        github: "https://github.com/AhmedL3swy",
-        live: ""
+        image: "./images/portfolio/exam.png",
+        github: "https://github.com/AhmedL3swy/Examination-System",
+        live: "",
+        category: "Desktop Apps"
     },
     {
         title: "E-Commerce Application",
-        image: "./images/portfolio/portfolio-4.jpg",
-        github: "https://github.com/AhmedL3swy",
-        live: ""
+        image: "./images/portfolio/E-Commerce.png",
+        github: "https://github.com/AhmedL3swy/e-Commerce",
+        live: "",
+        category: "Web Apps"
     },
     {
         title: "Attendance System",
-        image: "./images/portfolio/portfolio-5.jpg",
-        github: "https://github.com/AhmedL3swy",
-        live: ""
+        image: "./images/portfolio/Attendance.png",
+        github: "https://github.com/AhmedL3swy/MVC-Attendance-System",
+        live: "",
+        category: "Web Apps"
     }
 ]
+let Key2Disaply={
+    "AI_MODEL": "AI Model",
+    "website": "APP"
+}
 
-let webApps = [
-    {
-        title: "Price Comparison Website",
-        image: "./images/portfolio/portfolio-1.jpg",
-        github: "https://github.com/AhmedL3swy",
-        live: ""
-    },
-    {
-        title: "E-Commerce Application",
-        image: "./images/portfolio/portfolio-4.jpg",
-        github: "https://github.com/AhmedL3swy",
-        live: ""
-    },
-    {
-        title: "Attendance System",
-        image: "./images/portfolio/portfolio-5.jpg",
-        github: "https://github.com/AhmedL3swy",
-        live: ""
-    }
-]
+let webApps = allProjects.filter(project => project.category == "Web Apps");
+let aiProjects = allProjects.filter(project => project.category == "AI Projects");
+let desktopApps = allProjects.filter(project => project.category == "Desktop Apps");
 
-let aiProjects = [
-    {
-        title: "Dehazing API for Self-Driving Cars",
-        image: "./images/portfolio/portfolio-2.jpg",
-        github: "https://github.com/AhmedL3swy",
-        live: ""
-    }
-]
 
-let desktopApps = [
-    {
-        title: "Examination System",
-        image: "./images/portfolio/portfolio-3.jpg",
-        github: "https://github.com/AhmedL3swy",
-        live: ""
-    }
-]
 
 function DisplayPortfolioItems(elem, arrayOfWorks) {
     let allButtons = document.querySelectorAll(".portfolio-heading button");
@@ -110,17 +88,32 @@ function DisplayPortfolioItems(elem, arrayOfWorks) {
         let title = document.createElement("h3");
         title.innerText = element.title;
         liveDiv.appendChild(title);
-        
+
         if(element.github != "")
         {
-            let buttonGithub = document.createElement("button");
-            buttonGithub.classList = "git-btn btn";
-            let linkGithub = document.createElement("a");
-            linkGithub.setAttribute("href", element.github);
-            linkGithub.setAttribute("target", "blank");
-            linkGithub.innerText = "Github";
-            buttonGithub.appendChild(linkGithub);
-            liveDiv.appendChild(buttonGithub);
+            if (typeof element.github == "string"){
+
+                let buttonGithub = document.createElement("button");
+                buttonGithub.classList = "git-btn btn";
+                let linkGithub = document.createElement("a");
+                linkGithub.setAttribute("href", element.github);
+                linkGithub.setAttribute("target", "blank");
+                linkGithub.innerText = "Github";
+                buttonGithub.appendChild(linkGithub);
+                liveDiv.appendChild(buttonGithub);
+            }
+            else if (typeof element.github == "object") {
+                for (const [key, value] of Object.entries(element.github)) {
+                    let buttonGithub = document.createElement("button");
+                    buttonGithub.classList = "git-btn btn";
+                    let linkGithub = document.createElement("a");
+                    linkGithub.setAttribute("href", value);
+                    linkGithub.setAttribute("target", "blank");
+                    linkGithub.innerText = Key2Disaply[key] + " Github";
+                    buttonGithub.appendChild(linkGithub);
+                    liveDiv.appendChild(buttonGithub);
+                }
+            }
         }
 
         if(element.live != "")
