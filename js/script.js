@@ -147,11 +147,13 @@ window.addEventListener("load", function() {
 
     /* aside */
     this.document.querySelector(".nav").addEventListener("click", function(e){
-        if (e.target.nodeName == "A") {
+        // Only handle clicks on direct <a> children of <li> elements
+        if (e.target.nodeName === "A" && e.target.parentElement.nodeName === "LI") {
             Array.from(document.querySelectorAll(".nav li a")).forEach(link=>{
                 link.classList.remove("active");
             })
             e.target.classList.add("active");
+            
             //remove the active class from all sections
             Array.from(document.querySelectorAll(".section")).forEach(section=>{
                 if (section.classList.contains("active")) {
@@ -161,20 +163,39 @@ window.addEventListener("load", function() {
                 }
                 section.classList.remove("active");
             })
+            
             //get the section to which the link belongs and make it active
-            document.querySelector(e.target.getAttribute("href")).classList.add("active");
-            document.querySelector(e.target.getAttribute("href")).classList.remove("back-section");
-            document.querySelector(e.target.getAttribute("href")).classList.remove("prev-section");
+            const targetSection = document.querySelector(e.target.getAttribute("href"));
+            if (targetSection) {
+                targetSection.classList.add("active");
+                targetSection.classList.remove("back-section");
+                targetSection.classList.remove("prev-section");
+            }
 
-            //close the aside
+            //close the aside - ONLY for navigation clicks, not programmatic ones
             if (window.innerWidth < 1200) {
                 slideAside();
             }
         }
     })
 
-    /*when clicking hiring me do the same for when clicking contact a*/
-    document.querySelector(".hire-me").addEventListener("click", openContactSection);
+    /*when clicking any 'Hire me' button, prevent default anchor jump and activate contact section without toggling the aside*/
+    document.querySelectorAll(".hire-me").forEach(btn => {
+        btn.addEventListener("click", function(e) {
+            e.preventDefault();
+            openContactSection();
+            // smooth-scroll and focus the contact section for accessibility
+            const contactSection = document.querySelector('#contact');
+            if (contactSection) {
+                try {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                } catch (err) {}
+                // make focusable and focus
+                if (!contactSection.hasAttribute('tabindex')) contactSection.setAttribute('tabindex', '-1');
+                contactSection.focus({ preventScroll: true });
+            }
+        });
+    });
 
     document.querySelector(".nav-toggler").addEventListener("click", slideAside);
 
@@ -227,6 +248,8 @@ window.addEventListener("load", function() {
         setTimeout(() => {
             if (cvClose) cvClose.focus();
         }, 60);
+        // prevent background scrolling while modal is open
+        try { document.body.classList.add('cv-open'); } catch (e) {}
     }
 
     function closeCvModal() {
@@ -237,6 +260,8 @@ window.addEventListener("load", function() {
         if (cvPreview) {
             cvPreview.setAttribute('src', '');
         }
+        // restore background scrolling
+        try { document.body.classList.remove('cv-open'); } catch (e) {}
     }
 
     if (openCvFloating) {
@@ -286,6 +311,49 @@ function slideAside() {
 }
 
 function openContactSection() {
-    document.querySelector("#contactBtn").click();
-}
+    // Programmatically activate the contact section without triggering the aside nav click handler
+    const contactNavLink = document.querySelector('.nav li a[href="#contact"]');
+    if (contactNavLink) {
+        document.querySelectorAll('.nav li a').forEach(link => link.classList.remove('active'));
+        contactNavLink.classList.add('active');
+    }
 
+    // Update sections
+    Array.from(document.querySelectorAll('.section')).forEach(section => {
+        if (section.classList.contains('active')) {
+            section.classList.add('prev-section');
+        } else {
+            section.classList.add('back-section');
+        }
+        section.classList.remove('active');
+    });
+
+    // Activate contact section
+    const contactSection = document.querySelector('#contact');
+    if (contactSection) {
+        contactSection.classList.add('active');
+        contactSection.classList.remove('back-section');
+        contactSection.classList.remove('prev-section');
+        
+        // Smooth scroll to contact section
+        try {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+        } catch (err) {
+            console.log('Smooth scroll not supported');
+        }
+        
+        // Make focusable and focus for accessibility
+        if (!contactSection.hasAttribute('tabindex')) {
+            contactSection.setAttribute('tabindex', '-1');
+        }
+        contactSection.focus({ preventScroll: true });
+    }
+
+    // IMPORTANT: Close the aside if it's open on mobile
+    if (window.innerWidth < 1200) {
+        const aside = document.querySelector(".aside");
+        if (aside && aside.classList.contains("slider")) {
+            slideAside(); // This will close the aside
+        }
+    }
+}
