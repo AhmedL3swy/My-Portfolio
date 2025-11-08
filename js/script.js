@@ -137,13 +137,33 @@ window.addEventListener("load", function() {
     let allProjectsButton = document.querySelector(".portfolio-heading button");
     DisplayPortfolioItems(allProjectsButton, allProjects);
 
-    /* typed animation */
-    let typed = new Typed(".typing", {
-        strings: ["", "Full-Stack .NET Developer", "Angular Developer", "DevOps Engineer", "Software Engineer"],
-        typeSpeed:100,
-        BackSpeed: 60,
-        loop: true
-    })
+    /* typed animation with automatic 'a' / 'an' article detection */
+    const typingStrings = [ "Software Engineer","Full-Stack .NET Developer",".NET Developer", "Angular Developer", "DevOps Engineer"];
+
+    function detectArticle(text) {
+        if (!text || typeof text !== 'string') return 'a';
+        // find first alphabetic character
+        const m = text.match(/[A-Za-z]/);
+        const first = m ? m[0].toLowerCase() : text.trim().charAt(0).toLowerCase();
+        // treat vowels as 'an' (simple heuristic)
+        return ['a','e','i','o','u'].includes(first) ? 'an' : 'a';
+    }
+
+    const articleEl = document.getElementById('typing-article');
+
+    let typed = new Typed('.typing', {
+        strings: typingStrings,
+        typeSpeed: 100,
+        backSpeed: 60,
+        loop: true,
+        preStringTyped: function(arrayPos) {
+            try {
+                const s = typingStrings[arrayPos] || '';
+                const article = detectArticle(s);
+                if (articleEl) articleEl.innerText = article;
+            } catch (err) { /* ignore */ }
+        }
+    });
 
     /* aside */
     this.document.querySelector(".nav").addEventListener("click", function(e){
